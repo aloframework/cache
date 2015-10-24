@@ -10,7 +10,6 @@
     "5.4",
     "AloFramework",
     "cache",
-    "redis",
     "redis"
   ],
   "authors": [
@@ -25,11 +24,14 @@
     "issues": "https://github.com/aloframework/cache/issues"
   },
   "require": {
-    "php": ">=5.4"
+    "php": ">=5.4",
+    "ext-redis": "*",
+    "aloframework/log": "^1.0 || ^2.0",
+    "aloframework/config": "^1.0.1"
   },
   "autoload": {
     "psr-4": {
-      "AloFramework\\Common\\": "src"
+      "AloFramework\\Cache\\": "src"
     }
   }
 }
