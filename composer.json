@@ -1,0 +1,35 @@
+{
+  "name": "aloframework/cache",
+  "description": "Common elements of AloFramework",
+  "prefer-stable": true,
+  "type": "library",
+  "license": "GPL-3.0+",
+  "homepage": "https://github.com/aloframework/cache",
+  "keywords": [
+    "PHP",
+    "5.4",
+    "AloFramework",
+    "cache",
+    "redis",
+    "redis"
+  ],
+  "authors": [
+    {
+      "name": "Art",
+      "email": "a.molcanovas@gmail.com",
+      "role": "Developer",
+      "homepage": "https://github.com/Alorel"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/aloframework/cache/issues"
+  },
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "AloFramework\\Common\\": "src"
+    }
+  }
+}
