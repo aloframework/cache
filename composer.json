@@ -27,7 +27,8 @@
     "php": ">=5.4",
     "ext-redis": "*",
     "aloframework/log": "^1.0 || ^2.0",
-    "aloframework/config": "^1.0.1"
+    "aloframework/config": "^1.0.1",
+    "aloframework/common": "^1.0"
   },
   "autoload": {
     "psr-4": {

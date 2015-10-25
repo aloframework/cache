@@ -5,13 +5,12 @@
     use ArrayAccess;
     use Countable;
     use IteratorAggregate;
-    use Serializable;
 
     /**
      * The AloFramework cache interface
      * @author Art <a.molcanovas@gmail.com>
      */
-    interface ClientInterface extends ArrayAccess, Countable, Serializable, IteratorAggregate {
+    interface ClientInterface extends ArrayAccess, Countable, IteratorAggregate {
 
         /**
          * Connect to the cache server
@@ -28,9 +27,9 @@
          * Deletes a cached item
          * @author Art <a.molcanovas@gmail.com>
          *
-         * @param string $key Item key
+         * @param string|array $key Item key or array of keys
          *
-         * @return bool True if the key existed, false if it didn't
+         * @return ClientInterface
          */
         public function delete($key);
 
@@ -62,12 +61,14 @@
          * Sets a cached item
          * @author Art <a.molcanovas@gmail.com>
          *
-         * @param string $key   Item key
-         * @param mixed  $value Item value
+         * @param string        $key     Item key
+         * @param mixed         $value   Item value
+         * @param int|\DateTime $timeout Expiration time in seconds, or a DateTime object for when it's supposed to
+         *                               expire
          *
          * @return bool
          */
-        public function set($key, $value);
+        public function set($key, $value, $timeout = null);
 
         /**
          * Magically gets a cached item
