@@ -65,26 +65,15 @@
         }
 
         /**
-         * Magically gets a cached item
-         * @author Art <a.molcanovas@gmail.com>
-         *
-         * @param string $key Item key
-         *
-         * @return mixed
+         * Count elements of an object
+         * @link  http://php.net/manual/en/countable.count.php
+         * @return int The custom count as an integer.
+         * </p>
+         * <p>
+         * The return value is cast to an integer.
          */
-        public function __get($key) {
-            return $this->get($key);
-        }
-
-        /**
-         * Magically sets a cached item
-         * @author Art <a.molcanovas@gmail.com>
-         *
-         * @param string $key   Item key
-         * @param mixed  $value Item value
-         */
-        public function __set($key, $value) {
-            $this->set($key, $value);
+        public function count() {
+            return parent::dbSize();
         }
 
         /**
@@ -113,7 +102,7 @@
          *
          * @return mixed The item or null if it's not found
          */
-        public function get($key) {
+        public function getKey($key) {
             return parent::get($key);
         }
 
@@ -128,7 +117,7 @@
          *
          * @return bool
          */
-        public function set($key, $value, $timeout = null) {
+        public function setKey($key, $value, $timeout = null) {
             if ($timeout instanceof DateTime) {
                 $time    = time();
                 $timeout = $timeout->getTimestamp();
@@ -144,20 +133,10 @@
                 $timeout = Alo::ifnull($timeout, $this->config->timeout, true);
             }
 
-            return parent::set($key, $value, $timeout);
+            return parent::setex($key, $timeout, $value);
         }
 
-        /**
-         * Count elements of an object
-         * @link  http://php.net/manual/en/countable.count.php
-         * @return int The custom count as an integer.
-         * </p>
-         * <p>
-         * The return value is cast to an integer.
-         */
-        public function count() {
-            return parent::dbSize();
-        }
+
 
         /**
          * Returns all the cached items as an associative array
@@ -170,14 +149,12 @@
 
             if ($get) {
                 foreach ($get as $k) {
-                    $r[$k] = $this->get($k);
+                    $r[$k] = $this->getKey($k);
                 }
             }
 
             return $r;
         }
-
-
 
         /**
          * Purges all cached items
@@ -212,7 +189,7 @@
          * The return value will be casted to boolean if non-boolean was returned.
          */
         public function offsetExists($offset) {
-            return Alo::get($this->get($offset)) !== null;
+            return Alo::get($this->getKey($offset)) !== null;
         }
 
         /**
@@ -226,7 +203,7 @@
          * @return mixed Can return all value types.
          */
         public function offsetGet($offset) {
-            return $this->get($offset);
+            return $this->getKey($offset);
         }
 
         /**
@@ -243,7 +220,7 @@
          * @return void
          */
         public function offsetSet($offset, $value) {
-            $this->set($offset, $value);
+            $this->setKey($offset, $value);
         }
 
         /**

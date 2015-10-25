@@ -41,7 +41,7 @@
          *
          * @return mixed The item or null if it's not found
          */
-        public function get($key);
+        public function getKey($key);
 
         /**
          * Returns all the cached items as an associative array
@@ -68,24 +68,5 @@
          *
          * @return bool
          */
-        public function set($key, $value, $timeout = null);
-
-        /**
-         * Magically gets a cached item
-         * @author Art <a.molcanovas@gmail.com>
-         *
-         * @param string $key Item key
-         *
-         * @return mixed
-         */
-        public function __get($key);
-
-        /**
-         * Magically sets a cached item
-         * @author Art <a.molcanovas@gmail.com>
-         *
-         * @param string $key   Item key
-         * @param mixed  $value Item value
-         */
-        public function __set($key, $value);
+        public function setKey($key, $value, $timeout = null);
     }
