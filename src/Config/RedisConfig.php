@@ -11,7 +11,7 @@
      * @property string $port    The port to use
      * @property int    $timeout The default timeout in seconds
      */
-    class Redis extends AbstractConfig {
+    class RedisConfig extends AbstractConfig {
 
         /**
          * Default IP config key

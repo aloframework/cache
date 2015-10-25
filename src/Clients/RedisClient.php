@@ -4,7 +4,7 @@
 
     use AloFramework\Cache\CacheException;
     use AloFramework\Cache\ClientInterface;
-    use AloFramework\Cache\Config\Redis as Config;
+    use AloFramework\Cache\Config\RedisConfig as Config;
     use AloFramework\Common\Alo;
     use AloFramework\Config\Configurable;
     use AloFramework\Config\ConfigurableTrait;
@@ -12,13 +12,14 @@
     use ArrayIterator;
     use DateTime;
     use Psr\Log\LoggerInterface;
+    use Redis;
     use Traversable;
 
     /**
      * A Redis-based cache client
      * @author Art <a.molcanovas@gmail.com>
      */
-    class Redis extends \Redis implements ClientInterface, Configurable {
+    class RedisClient extends Redis implements ClientInterface, Configurable {
 
         use ConfigurableTrait;
 
@@ -76,6 +77,17 @@
         }
 
         /**
+         * Magically sets a cached item
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param string $key   Item key
+         * @param mixed  $value Item value
+         */
+        public function __set($key, $value) {
+            $this->set($key, $value);
+        }
+
+        /**
          * Deletes a cached item
          * @author Art <a.molcanovas@gmail.com>
          *
@@ -94,17 +106,6 @@
         }
 
         /**
-         * Magically sets a cached item
-         * @author Art <a.molcanovas@gmail.com>
-         *
-         * @param string $key   Item key
-         * @param mixed  $value Item value
-         */
-        public function __set($key, $value) {
-            $this->set($key, $value);
-        }
-
-        /**
          * Returns a cached item
          * @author Art <a.molcanovas@gmail.com>
          *
@@ -114,24 +115,6 @@
          */
         public function get($key) {
             return parent::get($key);
-        }
-
-        /**
-         * Returns all the cached items as an associative array
-         * @author Art <a.molcanovas@gmail.com>
-         * @return array
-         */
-        public function getAll() {
-            $get = parent::keys('*');
-            $r   = [];
-
-            if ($get) {
-                foreach ($get as $k) {
-                    $r[$k] = $this->get($k);
-                }
-            }
-
-            return $r;
         }
 
         /**
@@ -165,15 +148,6 @@
         }
 
         /**
-         * Purges all cached items
-         * @author Art <a.molcanovas@gmail.com>
-         * @return bool
-         */
-        public function purge() {
-            return parent::flushAll();
-        }
-
-        /**
          * Count elements of an object
          * @link  http://php.net/manual/en/countable.count.php
          * @return int The custom count as an integer.
@@ -183,6 +157,35 @@
          */
         public function count() {
             return parent::dbSize();
+        }
+
+        /**
+         * Returns all the cached items as an associative array
+         * @author Art <a.molcanovas@gmail.com>
+         * @return array
+         */
+        public function getAll() {
+            $get = parent::keys('*');
+            $r   = [];
+
+            if ($get) {
+                foreach ($get as $k) {
+                    $r[$k] = $this->get($k);
+                }
+            }
+
+            return $r;
+        }
+
+
+
+        /**
+         * Purges all cached items
+         * @author Art <a.molcanovas@gmail.com>
+         * @return bool
+         */
+        public function purge() {
+            return parent::flushAll();
         }
 
         /**
@@ -256,6 +259,5 @@
         public function offsetUnset($offset) {
             $this->delete($offset);
         }
-
 
     }
