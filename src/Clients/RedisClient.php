@@ -62,8 +62,18 @@
          * @return bool Whether the connection succeeded
          */
         function connect($ip = null, $port = null) {
-            return parent::connect(Alo::ifnull($ip, $this->config->ip, true),
-                                   Alo::ifnull($port, $this->config->port, true));
+            $ip   = Alo::ifnull($ip, $this->config->ip, true);
+            $port = Alo::ifnull($port, $this->config->port, true);
+
+            $con = parent::connect($ip, $port);
+
+            if ($con) {
+                $this->log->debug('Connected to Redis @ ' . $ip . ':' . $port);
+            } else {
+                $this->log->critical('Failed to connect to Redis @ ' . $ip . ':' . $port);
+            }
+
+            return $con;
         }
 
         /**
@@ -85,8 +95,10 @@
          */
         function delete($key) {
             if (is_array($key)) {
+                $this->log->info('Deleting the following Redis keys: ' . implode(', ', $key));
                 call_user_func_array('parent::delete', $key);
             } else {
+                $this->log->info('Deleting Redis key ' . $key);
                 parent::delete($key);
             }
 
@@ -161,7 +173,18 @@
          * @return bool
          */
         function purge() {
-            return $this->flushAll();
+            $p = $this->flushAll();
+
+            if ($p) {
+                $this->log->notice('Purged Redis');
+                //@codeCoverageIgnoreStart
+            } else {
+                $this->log->error('Failed to purge Redis');
+            }
+
+            //@codeCoverageIgnoreEnd
+
+            return $p;
         }
 
         /**
