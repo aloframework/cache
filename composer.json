@@ -1,6 +1,6 @@
 {
   "name": "aloframework/cache",
-  "description": "Caching library of AloFramework",
+  "description": "Dual-way Redis cache management",
   "prefer-stable": true,
   "type": "library",
   "license": "GPL-3.0+",
