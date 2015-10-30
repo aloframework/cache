@@ -1,6 +1,6 @@
 <?php
 
-    namespace AloFramework\Cache\Tests;
+    namespace AloFramework\Cache\Tests\Misc;
 
     use AloFramework\Cache\Config\RedisConfig;
     use PHPUnit_Framework_TestCase;

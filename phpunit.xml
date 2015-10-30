@@ -13,8 +13,11 @@
         >
 
     <testsuites>
-        <testsuite name="Default">
-            <directory>./tests</directory>
+        <testsuite name="Misc">
+            <directory>./tests/Misc</directory>
+        </testsuite>
+        <testsuite name="Clients">
+            <directory>./tests/Clients</directory>
         </testsuite>
     </testsuites>
 

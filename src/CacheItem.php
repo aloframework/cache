@@ -5,10 +5,15 @@
     use AloFramework\Cache\CacheException as Cex;
     use AloFramework\Cache\ClientInterface as CI;
     use DateTime;
+    use InvalidArgumentException as Invalid;
 
     /**
      * A representation of a cached item
      * @author Art <a.molcanovas@gmail.com>
+     * @property string          $key      Cache item key
+     * @property mixed           $value    Cache item value
+     * @property int             $lifetime Cache item lifetime remaining
+     * @property ClientInterface $client   The cache client
      */
     class CacheItem {
 
@@ -37,6 +42,12 @@
         private $lifetime = 0;
 
         /**
+         * Allowed magic getters/setters
+         * @var array
+         */
+        private static $allowedMagic = ['key', 'lifetime', 'value', 'client'];
+
+        /**
          * Constructor
          *
          * @param string $key    Immediately set the key
@@ -44,7 +55,45 @@
          * @param CI     $client Store a reference to the client
          */
         function __construct($key = null, $value = null, CI $client = null) {
-            $this->setKey($key)->setValue($value)->setClient($client);
+            $this->setKey($key)->setValue($value);
+
+            if ($client) {
+                $this->setClient($client);
+            }
+        }
+
+        /**
+         * Magic getter
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param string $key key to get
+         *
+         * @return mixed
+         * @throws Invalid when the key doesn't exist
+         */
+        function __get($key) {
+            if (in_array($key, self::$allowedMagic)) {
+                return $this->{$key};
+            } else {
+                throw new Invalid('The property does not exist: ' . $key);
+            }
+        }
+
+        /**
+         * Magic setter
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param string $key   Key to set
+         * @param mixed  $value Value to set
+         *
+         * @throws Invalid when the key doesn't exist
+         */
+        function __set($key, $value) {
+            if (in_array($key, self::$allowedMagic)) {
+                call_user_func([$this, 'set' . ucfirst(strtolower($key))], $value);
+            } else {
+                throw new Invalid('The property does not exist: ' . $key);
+            }
         }
 
         /**
@@ -73,10 +122,12 @@
                 if ($time > $timeout) {
                     trigger_error('The timeout cannot be in the past', E_USER_WARNING);
 
+                    //@codeCoverageIgnoreStart
                     return false;
+                    //@codeCoverageIgnoreEnd
+                } else {
+                    $timeout = (int)$timeout - $time;
                 }
-            } else {
-                $timeout = (int)$timeout - $time;
             }
 
             $this->lifetime = $timeout;
@@ -171,7 +222,7 @@
                 $client = &$server;
             }
 
-            return $client->exists([$this->key]);
+            return $client->exists($this->key);
         }
 
         /**
@@ -290,7 +341,7 @@
                 $client = &$server;
             }
 
-            $this->lifetime = $client->exists([$this->key]) ? $client->getRemainingLifetime($this->key) : 0;
+            $this->lifetime = $client->exists($this->key) ? $client->getRemainingLifetime($this->key) : 0;
 
             return $this->lifetime;
         }
@@ -313,7 +364,7 @@
                 $client = &$server;
             }
 
-            $this->value = $client->exists([$this->key]) ? $client->getKey($this->key) : null;
+            $this->value = $client->exists($this->key) ? $client->getKey($this->key) : null;
 
             return $this->value;
         }

@@ -41,10 +41,12 @@
          */
         function __construct(Config $config = null, LoggerInterface $logger = null) {
             parent::__construct();
+            //@codeCoverageIgnoreStart
             if (!class_exists('\Redis')) {
                 throw new CacheException('The Redis extension must be enabled and running',
                                          CacheException::E_EXTENSION_DISABLED);
             } else {
+                //@codeCoverageIgnoreEnd
                 $this->log    = Alo::ifnull($logger, new Log());
                 $this->config = Alo::ifnull($config, new Config());
             }
@@ -122,7 +124,9 @@
                 if ($time > $timeout) {
                     trigger_error('The timeout cannot be in the past', E_USER_WARNING);
 
+                    //@codeCoverageIgnoreStart
                     return false;
+                    //@codeCoverageIgnoreEnd
                 } else {
                     $timeout = $timeout - $time;
                 }
@@ -195,6 +199,18 @@
          */
         function offsetGet($offset) {
             return $this->getKey($offset);
+        }
+
+        /**
+         * Check if the key exists
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param string $key The key
+         *
+         * @return bool
+         */
+        function exists($key) {
+            return parent::exists($key);
         }
 
         /**

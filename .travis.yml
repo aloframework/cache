@@ -7,6 +7,9 @@ php:
   - 7.0
   - nightly
 
+services:
+ - redis-server
+
 before_script:
  - composer self-update
  - phpenv config-add phpunit.cnf.ini
