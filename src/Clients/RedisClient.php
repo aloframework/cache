@@ -59,7 +59,7 @@
          *
          * @return bool Whether the connection succeeded
          */
-        public function connect($ip = null, $port = null) {
+        function connect($ip = null, $port = null) {
             return parent::connect(Alo::ifnull($ip, $this->config->ip, true),
                                    Alo::ifnull($port, $this->config->port, true));
         }
@@ -72,8 +72,8 @@
          * <p>
          * The return value is cast to an integer.
          */
-        public function count() {
-            return parent::dbSize();
+        function count() {
+            return $this->dbSize();
         }
 
         /**
@@ -84,7 +84,7 @@
          *
          * @return self
          */
-        public function delete($key) {
+        function delete($key) {
             if (is_array($key)) {
                 call_user_func_array('parent::delete', $key);
             } else {
@@ -102,8 +102,8 @@
          *
          * @return mixed The item or null if it's not found
          */
-        public function getKey($key) {
-            return parent::get($key);
+        function getKey($key) {
+            return $this->get($key);
         }
 
         /**
@@ -117,7 +117,7 @@
          *
          * @return bool
          */
-        public function setKey($key, $value, $timeout = null) {
+        function setKey($key, $value, $timeout = null) {
             if ($timeout instanceof DateTime) {
                 $time    = time();
                 $timeout = $timeout->getTimestamp();
@@ -133,18 +133,16 @@
                 $timeout = Alo::ifnull($timeout, $this->config->timeout, true);
             }
 
-            return parent::setex($key, $timeout, $value);
+            return $this->setex($key, $timeout, $value);
         }
-
-
 
         /**
          * Returns all the cached items as an associative array
          * @author Art <a.molcanovas@gmail.com>
          * @return array
          */
-        public function getAll() {
-            $get = parent::keys('*');
+        function getAll() {
+            $get = $this->keys('*');
             $r   = [];
 
             if ($get) {
@@ -161,8 +159,8 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return bool
          */
-        public function purge() {
-            return parent::flushAll();
+        function purge() {
+            return $this->flushAll();
         }
 
         /**
@@ -171,7 +169,7 @@
          * @return Traversable An instance of an object implementing <b>Iterator</b> or
          * <b>Traversable</b>
          */
-        public function getIterator() {
+        function getIterator() {
             return new ArrayIterator($this->getAll());
         }
 
@@ -179,17 +177,12 @@
          * Whether a offset exists
          * @link  http://php.net/manual/en/arrayaccess.offsetexists.php
          *
-         * @param mixed $offset <p>
-         *                      An offset to check for.
-         *                      </p>
+         * @param mixed $offset The key
          *
-         * @return boolean true on success or false on failure.
-         * </p>
-         * <p>
-         * The return value will be casted to boolean if non-boolean was returned.
+         * @return boolean
          */
-        public function offsetExists($offset) {
-            return Alo::get($this->getKey($offset)) !== null;
+        function offsetExists($offset) {
+            return $this->exists($offset);
         }
 
         /**
@@ -202,7 +195,7 @@
          *
          * @return mixed Can return all value types.
          */
-        public function offsetGet($offset) {
+        function offsetGet($offset) {
             return $this->getKey($offset);
         }
 
@@ -219,7 +212,7 @@
          *
          * @return void
          */
-        public function offsetSet($offset, $value) {
+        function offsetSet($offset, $value) {
             $this->setKey($offset, $value);
         }
 
@@ -233,8 +226,20 @@
          *
          * @return void
          */
-        public function offsetUnset($offset) {
+        function offsetUnset($offset) {
             $this->delete($offset);
+        }
+
+        /**
+         * Returns how many seconds this key has left before expiring
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param string $key The key
+         *
+         * @return int The remaining lifetime in seconds. If the key doesn't exist 0 is returned.
+         */
+        function getRemainingLifetime($key) {
+            return (int)$this->ttl($key);
         }
 
     }
