@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class AloFramework\Cache\Clients\RedisClient | AloFramework Cache 1.0 API</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">AloFramework Cache 1.0 API</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-AloFramework.Cache.Clients.html" title="Summary of AloFramework\Cache\Clients"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+					<li class="divider-vertical"></li>
+
+					<li>
+						<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+					</li>
+
+						<li>
+							<a href="annotation-group-deprecated.html" title="List of elements with deprecated annotation">
+								<span>Deprecated</span>
+							</a>
+						</li>
+						<li>
+							<a href="annotation-group-todo.html" title="List of elements with todo annotation">
+								<span>Todo</span>
+							</a>
+						</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-AloFramework.html">
+							AloFramework<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-AloFramework.Cache.html">
+							Cache<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-AloFramework.Cache.Clients.html">
+							Clients						</a>
+							</li>
+					<li>
+						<a href="namespace-AloFramework.Cache.Config.html">
+							Config						</a>
+							</li>
+								</ul></li></ul></li>
+					<li>
+						<a href="namespace-PHP.html">
+							PHP						</a>
+							</li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-AloFramework.Cache.Clients.RedisClient.html">RedisClient</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class RedisClient</h1>
+
+
+	<div class="description">
+	<p>A Redis-based cache client</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+			<a href="class-Redis.html"><span>Redis</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>AloFramework\Cache\Clients\RedisClient</span></b>			
+			 implements 
+				<a href="class-AloFramework.Cache.ClientInterface.html"><span>AloFramework\Cache\ClientInterface</span></a>, 
+			
+<span>AloFramework\Config\Configurable</span>
+			
+			 uses 
+					AloFramework\Config\ConfigurableTrait (not available)
+
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-AloFramework.html">AloFramework</a>\<a href="namespace-AloFramework.Cache.html">Cache</a>\<a href="namespace-AloFramework.Cache.Clients.html">Clients</a><br>
+		
+
+				<b>Author:</b>
+				Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+			<b>Located at</b> Clients/RedisClient.php		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code>__construct( <span><code><a href="class-AloFramework.Cache.Config.RedisConfig.html">AloFramework\Cache\Config\RedisConfig</a></code> <var>$config</var> = <span class="php-keyword1">null</span></span>, <span>Psr\Log\LoggerInterface <var>$logger</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Contructor</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Contructor</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$config</var></dt>
+						<dd>Config object</dd>
+						<dt><var>$logger</var></dt>
+						<dd><p>User-supplied logging object. AloFramework\Log will be used if one isn't
+                               supplied</p></dd>
+					</dl></div>
+
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-AloFramework.Cache.CacheException.html">AloFramework\Cache\CacheException</a></code><br>If the Redis PHP extension isn't enabled
+					</div>
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+					<h4>Overrides</h4>
+					<div class="list"><code><a href="class-Redis.html#___construct">Redis::__construct</a></code></div>
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="connect" id="_connect">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_connect">#</a>
+			<code>connect( <span>string <var>$ip</var> = <span class="php-keyword1">null</span></span>, <span>integer <var>$port</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Connect to the cache server</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Connect to the cache server</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$ip</var></dt>
+						<dd>Server IP</dd>
+						<dt><var>$port</var></dt>
+						<dd>Server port</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean<br>Whether the connection succeeded
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+					<h4>Overrides</h4>
+					<div class="list"><code><a href="class-Redis.html#_connect">Redis::connect</a></code></div>
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_connect">AloFramework\Cache\ClientInterface::connect()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="count" id="_count">
+
+			<td class="attributes"><code>
+				 public 
+				integer
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_count">#</a>
+			<code>count( )</code>
+
+			<div class="description short">
+				<p>Count elements of an object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Count elements of an object</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						integer
+					</div>
+
+
+					<h4>Link</h4>
+					<div class="list">
+							<a href="http://php.net/manual/en/countable.count.php">http://php.net/manual/en/countable.count.php</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-Countable.html#_count">Countable::count()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="delete" id="_delete">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-AloFramework.Cache.Clients.RedisClient.html">AloFramework\Cache\Clients\RedisClient</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_delete">#</a>
+			<code>delete( <span>string|array <var>$key</var></span> )</code>
+
+			<div class="description short">
+				<p>Deletes a cached item</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Deletes a cached item</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$key</var></dt>
+						<dd>Item key or array of keys</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-AloFramework.Cache.Clients.RedisClient.html">AloFramework\Cache\Clients\RedisClient</a></code>
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+					<h4>Overrides</h4>
+					<div class="list"><code><a href="class-Redis.html#_delete">Redis::delete</a></code></div>
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_delete">AloFramework\Cache\ClientInterface::delete()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getKey" id="_getKey">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getKey">#</a>
+			<code>getKey( <span>string <var>$key</var></span> )</code>
+
+			<div class="description short">
+				<p>Returns a cached item</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Returns a cached item</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$key</var></dt>
+						<dd>Item key</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed<br>The item or null if it's not found
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_getKey">AloFramework\Cache\ClientInterface::getKey()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setKey" id="_setKey">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setKey">#</a>
+			<code>setKey( <span>string <var>$key</var></span>, <span>mixed <var>$value</var></span>, <span>integer|<code><a href="class-DateTime.html">DateTime</a></code> <var>$timeout</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				<p>Sets a cached item</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Sets a cached item</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$key</var></dt>
+						<dd>Item key</dd>
+						<dt><var>$value</var></dt>
+						<dd>Item value</dd>
+						<dt><var>$timeout</var></dt>
+						<dd><p>Expiration time in seconds, or a DateTime object for when it's supposed to
+                              expire</p></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_setKey">AloFramework\Cache\ClientInterface::setKey()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getAll" id="_getAll">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getAll">#</a>
+			<code>getAll( )</code>
+
+			<div class="description short">
+				<p>Returns all the cached items as an associative array</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Returns all the cached items as an associative array</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_getAll">AloFramework\Cache\ClientInterface::getAll()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="purge" id="_purge">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_purge">#</a>
+			<code>purge( )</code>
+
+			<div class="description short">
+				<p>Purges all cached items</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Purges all cached items</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_purge">AloFramework\Cache\ClientInterface::purge()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getIterator" id="_getIterator">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Traversable.html">Traversable</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getIterator">#</a>
+			<code>getIterator( )</code>
+
+			<div class="description short">
+				<p>Retrieve an external iterator</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Retrieve an external iterator</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Traversable.html">Traversable</a></code><br><p>An instance of an object implementing <b>Iterator</b> or
+<b>Traversable</b></p>
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+					<h4>Link</h4>
+					<div class="list">
+							<a href="http://php.net/manual/en/iteratoraggregate.getiterator.php">http://php.net/manual/en/iteratoraggregate.getiterator.php</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-IteratorAggregate.html#_getIterator">IteratorAggregate::getIterator()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="offsetExists" id="_offsetExists">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_offsetExists">#</a>
+			<code>offsetExists( <span>mixed <var>$offset</var></span> )</code>
+
+			<div class="description short">
+				<p>Whether a offset exists</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Whether a offset exists</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$offset</var></dt>
+						<dd>The key</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+					<h4>Link</h4>
+					<div class="list">
+							<a href="http://php.net/manual/en/arrayaccess.offsetexists.php">http://php.net/manual/en/arrayaccess.offsetexists.php</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-ArrayAccess.html#_offsetExists">ArrayAccess::offsetExists()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="offsetGet" id="_offsetGet">
+
+			<td class="attributes"><code>
+				 public 
+				mixed
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_offsetGet">#</a>
+			<code>offsetGet( <span>mixed <var>$offset</var></span> )</code>
+
+			<div class="description short">
+				<p>Offset to retrieve</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Offset to retrieve</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$offset</var></dt>
+						<dd>The key</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						mixed
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+					<h4>Link</h4>
+					<div class="list">
+							<a href="http://php.net/manual/en/arrayaccess.offsetget.php">http://php.net/manual/en/arrayaccess.offsetget.php</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-ArrayAccess.html#_offsetGet">ArrayAccess::offsetGet()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="exists" id="_exists">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_exists">#</a>
+			<code>exists( <span>string <var>$key</var></span> )</code>
+
+			<div class="description short">
+				<p>Check if the key exists</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Check if the key exists</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$key</var></dt>
+						<dd>The key</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+					<h4>Overrides</h4>
+					<div class="list"><code><a href="class-Redis.html#_exists">Redis::exists</a></code></div>
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_exists">AloFramework\Cache\ClientInterface::exists()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="offsetSet" id="_offsetSet">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_offsetSet">#</a>
+			<code>offsetSet( <span>string <var>$offset</var></span>, <span>mixed <var>$value</var></span> )</code>
+
+			<div class="description short">
+				<p>Offset to set</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Offset to set</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$offset</var></dt>
+						<dd>The key</dd>
+						<dt><var>$value</var></dt>
+						<dd>Value to set</dd>
+					</dl></div>
+
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+					<h4>Link</h4>
+					<div class="list">
+							<a href="http://php.net/manual/en/arrayaccess.offsetset.php">http://php.net/manual/en/arrayaccess.offsetset.php</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-ArrayAccess.html#_offsetSet">ArrayAccess::offsetSet()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="offsetUnset" id="_offsetUnset">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_offsetUnset">#</a>
+			<code>offsetUnset( <span>mixed <var>$offset</var></span> )</code>
+
+			<div class="description short">
+				<p>Offset to unset</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Offset to unset</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$offset</var></dt>
+						<dd>The key</dd>
+					</dl></div>
+
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+					<h4>Link</h4>
+					<div class="list">
+							<a href="http://php.net/manual/en/arrayaccess.offsetunset.php">http://php.net/manual/en/arrayaccess.offsetunset.php</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-ArrayAccess.html#_offsetUnset">ArrayAccess::offsetUnset()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getRemainingLifetime" id="_getRemainingLifetime">
+
+			<td class="attributes"><code>
+				 public 
+				integer
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getRemainingLifetime">#</a>
+			<code>getRemainingLifetime( <span>string <var>$key</var></span> )</code>
+
+			<div class="description short">
+				<p>Returns how many seconds this key has left before expiring</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Returns how many seconds this key has left before expiring</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$key</var></dt>
+						<dd>The key</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						integer<br>The remaining lifetime in seconds. If the key doesn't exist 0 is returned.
+					</div>
+
+
+					<h4>Author</h4>
+					<div class="list">
+							Art <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x61;&#x2e;&#x6d;&#x6f;&#x6c;&#x63;&#x61;&#x6e;&#x6f;&#x76;&#x61;&#x73;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+					</div>
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-AloFramework.Cache.ClientInterface.html#_getRemainingLifetime">AloFramework\Cache\ClientInterface::getRemainingLifetime()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Redis.html#methods">Redis</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Redis.html#___destruct">__destruct()</a></code>, 
+				<code><a href="class-Redis.html#__prefix">_prefix()</a></code>, 
+				<code><a href="class-Redis.html#__serialize">_serialize()</a></code>, 
+				<code><a href="class-Redis.html#__unserialize">_unserialize()</a></code>, 
+				<code><a href="class-Redis.html#_append">append()</a></code>, 
+				<code><a href="class-Redis.html#_auth">auth()</a></code>, 
+				<code><a href="class-Redis.html#_bgSave">bgSave()</a></code>, 
+				<code><a href="class-Redis.html#_bgrewriteaof">bgrewriteaof()</a></code>, 
+				<code><a href="class-Redis.html#_bitcount">bitcount()</a></code>, 
+				<code><a href="class-Redis.html#_bitop">bitop()</a></code>, 
+				<code><a href="class-Redis.html#_bitpos">bitpos()</a></code>, 
+				<code><a href="class-Redis.html#_blPop">blPop()</a></code>, 
+				<code><a href="class-Redis.html#_brPop">brPop()</a></code>, 
+				<code><a href="class-Redis.html#_brpoplpush">brpoplpush()</a></code>, 
+				<code><a href="class-Redis.html#_clearLastError">clearLastError()</a></code>, 
+				<code><a href="class-Redis.html#_client">client()</a></code>, 
+				<code><a href="class-Redis.html#_close">close()</a></code>, 
+				<code><a href="class-Redis.html#_config">config()</a></code>, 
+				<code><a href="class-Redis.html#_dbSize">dbSize()</a></code>, 
+				<code><a href="class-Redis.html#_debug">debug()</a></code>, 
+				<code><a href="class-Redis.html#_decr">decr()</a></code>, 
+				<code><a href="class-Redis.html#_decrBy">decrBy()</a></code>, 
+				<code><a href="class-Redis.html#_del">del()</a></code>, 
+				<code><a href="class-Redis.html#_discard">discard()</a></code>, 
+				<code><a href="class-Redis.html#_dump">dump()</a></code>, 
+				<code><a href="class-Redis.html#_echo">echo()</a></code>, 
+				<code><a href="class-Redis.html#_eval">eval()</a></code>, 
+				<code><a href="class-Redis.html#_evalsha">evalsha()</a></code>, 
+				<code><a href="class-Redis.html#_evaluate">evaluate()</a></code>, 
+				<code><a href="class-Redis.html#_evaluateSha">evaluateSha()</a></code>, 
+				<code><a href="class-Redis.html#_exec">exec()</a></code>, 
+				<code><a href="class-Redis.html#_expire">expire()</a></code>, 
+				<code><a href="class-Redis.html#_expireAt">expireAt()</a></code>, 
+				<code><a href="class-Redis.html#_flushAll">flushAll()</a></code>, 
+				<code><a href="class-Redis.html#_flushDB">flushDB()</a></code>, 
+				<code><a href="class-Redis.html#_get">get()</a></code>, 
+				<code><a href="class-Redis.html#_getAuth">getAuth()</a></code>, 
+				<code><a href="class-Redis.html#_getBit">getBit()</a></code>, 
+				<code><a href="class-Redis.html#_getDBNum">getDBNum()</a></code>, 
+				<code><a href="class-Redis.html#_getHost">getHost()</a></code>, 
+				<code><a href="class-Redis.html#_getKeys">getKeys()</a></code>, 
+				<code><a href="class-Redis.html#_getLastError">getLastError()</a></code>, 
+				<code><a href="class-Redis.html#_getMode">getMode()</a></code>, 
+				<code><a href="class-Redis.html#_getMultiple">getMultiple()</a></code>, 
+				<code><a href="class-Redis.html#_getOption">getOption()</a></code>, 
+				<code><a href="class-Redis.html#_getPersistentID">getPersistentID()</a></code>, 
+				<code><a href="class-Redis.html#_getPort">getPort()</a></code>, 
+				<code><a href="class-Redis.html#_getRange">getRange()</a></code>, 
+				<code><a href="class-Redis.html#_getReadTimeout">getReadTimeout()</a></code>, 
+				<code><a href="class-Redis.html#_getSet">getSet()</a></code>, 
+				<code><a href="class-Redis.html#_getTimeout">getTimeout()</a></code>, 
+				<code><a href="class-Redis.html#_hDel">hDel()</a></code>, 
+				<code><a href="class-Redis.html#_hExists">hExists()</a></code>, 
+				<code><a href="class-Redis.html#_hGet">hGet()</a></code>, 
+				<code><a href="class-Redis.html#_hGetAll">hGetAll()</a></code>, 
+				<code><a href="class-Redis.html#_hIncrBy">hIncrBy()</a></code>, 
+				<code><a href="class-Redis.html#_hIncrByFloat">hIncrByFloat()</a></code>, 
+				<code><a href="class-Redis.html#_hKeys">hKeys()</a></code>, 
+				<code><a href="class-Redis.html#_hLen">hLen()</a></code>, 
+				<code><a href="class-Redis.html#_hMget">hMget()</a></code>, 
+				<code><a href="class-Redis.html#_hMset">hMset()</a></code>, 
+				<code><a href="class-Redis.html#_hSet">hSet()</a></code>, 
+				<code><a href="class-Redis.html#_hSetNx">hSetNx()</a></code>, 
+				<code><a href="class-Redis.html#_hVals">hVals()</a></code>, 
+				<code><a href="class-Redis.html#_hscan">hscan()</a></code>, 
+				<code><a href="class-Redis.html#_incr">incr()</a></code>, 
+				<code><a href="class-Redis.html#_incrBy">incrBy()</a></code>, 
+				<code><a href="class-Redis.html#_incrByFloat">incrByFloat()</a></code>, 
+				<code><a href="class-Redis.html#_info">info()</a></code>, 
+				<code><a href="class-Redis.html#_isConnected">isConnected()</a></code>, 
+				<code><a href="class-Redis.html#_keys">keys()</a></code>, 
+				<code><a href="class-Redis.html#_lGet">lGet()</a></code>, 
+				<code><a href="class-Redis.html#_lGetRange">lGetRange()</a></code>, 
+				<code><a href="class-Redis.html#_lInsert">lInsert()</a></code>, 
+				<code><a href="class-Redis.html#_lLen">lLen()</a></code>, 
+				<code><a href="class-Redis.html#_lPop">lPop()</a></code>, 
+				<code><a href="class-Redis.html#_lPush">lPush()</a></code>, 
+				<code><a href="class-Redis.html#_lPushx">lPushx()</a></code>, 
+				<code><a href="class-Redis.html#_lRemove">lRemove()</a></code>, 
+				<code><a href="class-Redis.html#_lSet">lSet()</a></code>, 
+				<code><a href="class-Redis.html#_lSize">lSize()</a></code>, 
+				<code><a href="class-Redis.html#_lastSave">lastSave()</a></code>, 
+				<code><a href="class-Redis.html#_lindex">lindex()</a></code>, 
+				<code><a href="class-Redis.html#_listTrim">listTrim()</a></code>, 
+				<code><a href="class-Redis.html#_lrange">lrange()</a></code>, 
+				<code><a href="class-Redis.html#_lrem">lrem()</a></code>, 
+				<code><a href="class-Redis.html#_ltrim">ltrim()</a></code>, 
+				<code><a href="class-Redis.html#_mget">mget()</a></code>, 
+				<code><a href="class-Redis.html#_migrate">migrate()</a></code>, 
+				<code><a href="class-Redis.html#_move">move()</a></code>, 
+				<code><a href="class-Redis.html#_mset">mset()</a></code>, 
+				<code><a href="class-Redis.html#_msetnx">msetnx()</a></code>, 
+				<code><a href="class-Redis.html#_multi">multi()</a></code>, 
+				<code><a href="class-Redis.html#_object">object()</a></code>, 
+				<code><a href="class-Redis.html#_open">open()</a></code>, 
+				<code><a href="class-Redis.html#_pconnect">pconnect()</a></code>, 
+				<code><a href="class-Redis.html#_persist">persist()</a></code>, 
+				<code><a href="class-Redis.html#_pexpire">pexpire()</a></code>, 
+				<code><a href="class-Redis.html#_pexpireAt">pexpireAt()</a></code>, 
+				<code><a href="class-Redis.html#_pfadd">pfadd()</a></code>, 
+				<code><a href="class-Redis.html#_pfcount">pfcount()</a></code>, 
+				<code><a href="class-Redis.html#_pfmerge">pfmerge()</a></code>, 
+				<code><a href="class-Redis.html#_ping">ping()</a></code>, 
+				<code><a href="class-Redis.html#_pipeline">pipeline()</a></code>, 
+				<code><a href="class-Redis.html#_popen">popen()</a></code>, 
+				<code><a href="class-Redis.html#_psetex">psetex()</a></code>, 
+				<code><a href="class-Redis.html#_psubscribe">psubscribe()</a></code>, 
+				<code><a href="class-Redis.html#_pttl">pttl()</a></code>, 
+				<code><a href="class-Redis.html#_publish">publish()</a></code>, 
+				<code><a href="class-Redis.html#_pubsub">pubsub()</a></code>, 
+				<code><a href="class-Redis.html#_punsubscribe">punsubscribe()</a></code>, 
+				<code><a href="class-Redis.html#_rPop">rPop()</a></code>, 
+				<code><a href="class-Redis.html#_rPush">rPush()</a></code>, 
+				<code><a href="class-Redis.html#_rPushx">rPushx()</a></code>, 
+				<code><a href="class-Redis.html#_randomKey">randomKey()</a></code>, 
+				<code><a href="class-Redis.html#_rawCommand">rawCommand()</a></code>, 
+				<code><a href="class-Redis.html#_rename">rename()</a></code>, 
+				<code><a href="class-Redis.html#_renameKey">renameKey()</a></code>, 
+				<code><a href="class-Redis.html#_renameNx">renameNx()</a></code>, 
+				<code><a href="class-Redis.html#_resetStat">resetStat()</a></code>, 
+				<code><a href="class-Redis.html#_restore">restore()</a></code>, 
+				<code><a href="class-Redis.html#_rpoplpush">rpoplpush()</a></code>, 
+				<code><a href="class-Redis.html#_sAdd">sAdd()</a></code>, 
+				<code><a href="class-Redis.html#_sContains">sContains()</a></code>, 
+				<code><a href="class-Redis.html#_sDiff">sDiff()</a></code>, 
+				<code><a href="class-Redis.html#_sDiffStore">sDiffStore()</a></code>, 
+				<code><a href="class-Redis.html#_sGetMembers">sGetMembers()</a></code>, 
+				<code><a href="class-Redis.html#_sInter">sInter()</a></code>, 
+				<code><a href="class-Redis.html#_sInterStore">sInterStore()</a></code>, 
+				<code><a href="class-Redis.html#_sMembers">sMembers()</a></code>, 
+				<code><a href="class-Redis.html#_sMove">sMove()</a></code>, 
+				<code><a href="class-Redis.html#_sPop">sPop()</a></code>, 
+				<code><a href="class-Redis.html#_sRandMember">sRandMember()</a></code>, 
+				<code><a href="class-Redis.html#_sRemove">sRemove()</a></code>, 
+				<code><a href="class-Redis.html#_sSize">sSize()</a></code>, 
+				<code><a href="class-Redis.html#_sUnion">sUnion()</a></code>, 
+				<code><a href="class-Redis.html#_sUnionStore">sUnionStore()</a></code>, 
+				<code><a href="class-Redis.html#_save">save()</a></code>, 
+				<code><a href="class-Redis.html#_scan">scan()</a></code>, 
+				<code><a href="class-Redis.html#_scard">scard()</a></code>, 
+				<code><a href="class-Redis.html#_script">script()</a></code>, 
+				<code><a href="class-Redis.html#_select">select()</a></code>, 
+				<code><a href="class-Redis.html#_sendEcho">sendEcho()</a></code>, 
+				<code><a href="class-Redis.html#_set">set()</a></code>, 
+				<code><a href="class-Redis.html#_setBit">setBit()</a></code>, 
+				<code><a href="class-Redis.html#_setOption">setOption()</a></code>, 
+				<code><a href="class-Redis.html#_setRange">setRange()</a></code>, 
+				<code><a href="class-Redis.html#_setTimeout">setTimeout()</a></code>, 
+				<code><a href="class-Redis.html#_setex">setex()</a></code>, 
+				<code><a href="class-Redis.html#_setnx">setnx()</a></code>, 
+				<code><a href="class-Redis.html#_sismember">sismember()</a></code>, 
+				<code><a href="class-Redis.html#_slaveof">slaveof()</a></code>, 
+				<code><a href="class-Redis.html#_slowlog">slowlog()</a></code>, 
+				<code><a href="class-Redis.html#_sort">sort()</a></code>, 
+				<code><a href="class-Redis.html#_sortAsc">sortAsc()</a></code>, 
+				<code><a href="class-Redis.html#_sortAscAlpha">sortAscAlpha()</a></code>, 
+				<code><a href="class-Redis.html#_sortDesc">sortDesc()</a></code>, 
+				<code><a href="class-Redis.html#_sortDescAlpha">sortDescAlpha()</a></code>, 
+				<code><a href="class-Redis.html#_srem">srem()</a></code>, 
+				<code><a href="class-Redis.html#_sscan">sscan()</a></code>, 
+				<code><a href="class-Redis.html#_strlen">strlen()</a></code>, 
+				<code><a href="class-Redis.html#_subscribe">subscribe()</a></code>, 
+				<code><a href="class-Redis.html#_substr">substr()</a></code>, 
+				<code><a href="class-Redis.html#_time">time()</a></code>, 
+				<code><a href="class-Redis.html#_ttl">ttl()</a></code>, 
+				<code><a href="class-Redis.html#_type">type()</a></code>, 
+				<code><a href="class-Redis.html#_unsubscribe">unsubscribe()</a></code>, 
+				<code><a href="class-Redis.html#_unwatch">unwatch()</a></code>, 
+				<code><a href="class-Redis.html#_wait">wait()</a></code>, 
+				<code><a href="class-Redis.html#_watch">watch()</a></code>, 
+				<code><a href="class-Redis.html#_zAdd">zAdd()</a></code>, 
+				<code><a href="class-Redis.html#_zCard">zCard()</a></code>, 
+				<code><a href="class-Redis.html#_zCount">zCount()</a></code>, 
+				<code><a href="class-Redis.html#_zDelete">zDelete()</a></code>, 
+				<code><a href="class-Redis.html#_zDeleteRangeByRank">zDeleteRangeByRank()</a></code>, 
+				<code><a href="class-Redis.html#_zDeleteRangeByScore">zDeleteRangeByScore()</a></code>, 
+				<code><a href="class-Redis.html#_zIncrBy">zIncrBy()</a></code>, 
+				<code><a href="class-Redis.html#_zInter">zInter()</a></code>, 
+				<code><a href="class-Redis.html#_zRange">zRange()</a></code>, 
+				<code><a href="class-Redis.html#_zRangeByLex">zRangeByLex()</a></code>, 
+				<code><a href="class-Redis.html#_zRangeByScore">zRangeByScore()</a></code>, 
+				<code><a href="class-Redis.html#_zRank">zRank()</a></code>, 
+				<code><a href="class-Redis.html#_zRem">zRem()</a></code>, 
+				<code><a href="class-Redis.html#_zRemRangeByRank">zRemRangeByRank()</a></code>, 
+				<code><a href="class-Redis.html#_zRemRangeByScore">zRemRangeByScore()</a></code>, 
+				<code><a href="class-Redis.html#_zRemove">zRemove()</a></code>, 
+				<code><a href="class-Redis.html#_zRemoveRangeByScore">zRemoveRangeByScore()</a></code>, 
+				<code><a href="class-Redis.html#_zRevRangeByScore">zRevRangeByScore()</a></code>, 
+				<code><a href="class-Redis.html#_zRevRank">zRevRank()</a></code>, 
+				<code><a href="class-Redis.html#_zReverseRange">zReverseRange()</a></code>, 
+				<code><a href="class-Redis.html#_zScore">zScore()</a></code>, 
+				<code><a href="class-Redis.html#_zSize">zSize()</a></code>, 
+				<code><a href="class-Redis.html#_zUnion">zUnion()</a></code>, 
+				<code><a href="class-Redis.html#_zinterstore">zinterstore()</a></code>, 
+				<code><a href="class-Redis.html#_zrevrange">zrevrange()</a></code>, 
+				<code><a href="class-Redis.html#_zscan">zscan()</a></code>, 
+				<code><a href="class-Redis.html#_zunionstore">zunionstore()</a></code>
+			</p>
+		</div>
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Constants summary</h2></div>
+		</div>
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Constants inherited from <a href="class-Redis.html#constants">Redis</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Redis.html#AFTER"><b>AFTER</b></a></code>, 
+				<code><a href="class-Redis.html#ATOMIC"><b>ATOMIC</b></a></code>, 
+				<code><a href="class-Redis.html#BEFORE"><b>BEFORE</b></a></code>, 
+				<code><a href="class-Redis.html#MULTI"><b>MULTI</b></a></code>, 
+				<code><a href="class-Redis.html#OPT_PREFIX"><b>OPT_PREFIX</b></a></code>, 
+				<code><a href="class-Redis.html#OPT_READ_TIMEOUT"><b>OPT_READ_TIMEOUT</b></a></code>, 
+				<code><a href="class-Redis.html#OPT_SCAN"><b>OPT_SCAN</b></a></code>, 
+				<code><a href="class-Redis.html#OPT_SERIALIZER"><b>OPT_SERIALIZER</b></a></code>, 
+				<code><a href="class-Redis.html#PIPELINE"><b>PIPELINE</b></a></code>, 
+				<code><a href="class-Redis.html#REDIS_HASH"><b>REDIS_HASH</b></a></code>, 
+				<code><a href="class-Redis.html#REDIS_LIST"><b>REDIS_LIST</b></a></code>, 
+				<code><a href="class-Redis.html#REDIS_NOT_FOUND"><b>REDIS_NOT_FOUND</b></a></code>, 
+				<code><a href="class-Redis.html#REDIS_SET"><b>REDIS_SET</b></a></code>, 
+				<code><a href="class-Redis.html#REDIS_STRING"><b>REDIS_STRING</b></a></code>, 
+				<code><a href="class-Redis.html#REDIS_ZSET"><b>REDIS_ZSET</b></a></code>, 
+				<code><a href="class-Redis.html#SCAN_NORETRY"><b>SCAN_NORETRY</b></a></code>, 
+				<code><a href="class-Redis.html#SCAN_RETRY"><b>SCAN_RETRY</b></a></code>, 
+				<code><a href="class-Redis.html#SERIALIZER_IGBINARY"><b>SERIALIZER_IGBINARY</b></a></code>, 
+				<code><a href="class-Redis.html#SERIALIZER_NONE"><b>SERIALIZER_NONE</b></a></code>, 
+				<code><a href="class-Redis.html#SERIALIZER_PHP"><b>SERIALIZER_PHP</b></a></code>
+			</p>
+		</div>
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="log" id="$log">
+			<td class="attributes"><code>
+				protected  
+				Psr\Log\LoggerInterface
+			</code></td>
+
+			<td class="name">
+<var>$log</var>
+				<div class="description short">
+					<p>Logger</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Logger</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$log" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		AloFramework Cache 1.0 API API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
