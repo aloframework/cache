@@ -67,10 +67,7 @@
         /**
          * Count elements of an object
          * @link  http://php.net/manual/en/countable.count.php
-         * @return int The custom count as an integer.
-         * </p>
-         * <p>
-         * The return value is cast to an integer.
+         * @return int
          */
         function count() {
             return $this->dbSize();
@@ -165,7 +162,8 @@
 
         /**
          * Retrieve an external iterator
-         * @link  http://php.net/manual/en/iteratoraggregate.getiterator.php
+         * @link   http://php.net/manual/en/iteratoraggregate.getiterator.php
+         * @author Art <a.molcanovas@gmail.com>
          * @return Traversable An instance of an object implementing <b>Iterator</b> or
          * <b>Traversable</b>
          */
@@ -175,7 +173,8 @@
 
         /**
          * Whether a offset exists
-         * @link  http://php.net/manual/en/arrayaccess.offsetexists.php
+         * @author Art <a.molcanovas@gmail.com>
+         * @link   http://php.net/manual/en/arrayaccess.offsetexists.php
          *
          * @param mixed $offset The key
          *
@@ -187,13 +186,12 @@
 
         /**
          * Offset to retrieve
-         * @link  http://php.net/manual/en/arrayaccess.offsetget.php
+         * @author Art <a.molcanovas@gmail.com>
+         * @link   http://php.net/manual/en/arrayaccess.offsetget.php
          *
-         * @param mixed $offset <p>
-         *                      The offset to retrieve.
-         *                      </p>
+         * @param mixed $offset The key
          *
-         * @return mixed Can return all value types.
+         * @return mixed
          */
         function offsetGet($offset) {
             return $this->getKey($offset);
@@ -201,14 +199,11 @@
 
         /**
          * Offset to set
-         * @link  http://php.net/manual/en/arrayaccess.offsetset.php
+         * @author Art <a.molcanovas@gmail.com>
+         * @link   http://php.net/manual/en/arrayaccess.offsetset.php
          *
-         * @param mixed $offset <p>
-         *                      The offset to assign the value to.
-         *                      </p>
-         * @param mixed $value  <p>
-         *                      The value to set.
-         *                      </p>
+         * @param string $offset The key
+         * @param mixed  $value  Value to set
          *
          * @return void
          */
@@ -218,11 +213,10 @@
 
         /**
          * Offset to unset
-         * @link  http://php.net/manual/en/arrayaccess.offsetunset.php
+         * @author Art <a.molcanovas@gmail.com>
+         * @link   http://php.net/manual/en/arrayaccess.offsetunset.php
          *
-         * @param mixed $offset <p>
-         *                      The offset to unset.
-         *                      </p>
+         * @param mixed $offset The key
          *
          * @return void
          */
