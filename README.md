@@ -52,6 +52,31 @@ Only Redis is supported at this time.
     
         //Or do anything you would with the standard Redis class - RedisClient extends it.
 
+## Alternative usage ##
+
+    <?php
+    
+        use AloFramework\Cache\Clients\RedisClient;
+        use AloFramework\Cache\CacheItem;
+    
+        //Save an item
+        $server = new RedisClient();
+        $server->connect();
+    
+        $cacheItem           = new CacheItem('key', 'value', $server);
+        $cacheItem->lifetime = 600;
+        $cacheItem->saveToServer();
+    
+        // Get or load an item
+        $cacheItem = new CacheItem('key');
+        $cacheItem->getFromServer($server);
+    
+        echo $cacheItem->value;
+
 
 ## Configuration ##
 Configuration is done via the [Configuration class](https://github.com/aloframework/config).
+
+ - `Cfg::CFG_IP` - default IP to use in the connect() method (defaults to 127.0.0.1)
+ - `Cfg::CFG_PORT` - default port to use in the connect() method (defaults to 6379)
+ - `Cfg::CFG_TIMEOUT` - default cache timeout (defaults to 300 seconds)
