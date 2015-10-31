@@ -126,7 +126,6 @@
          * @return  mixed|bool: If key didn't exist, FALSE is returned. Otherwise, the value related to this key is
          * returned.
          * @link    http://redis.io/commands/get
-         * @example $redis->get('key');
          */
         function get($key) {
             $get = parent::get($key);
@@ -143,25 +142,23 @@
          * @param   array $keys Array containing the list of the keys
          *
          * @return  array Array containing the values related to keys in argument
-         * @example
-         * <pre>
-         * $redis->set('key1', 'value1');
-         * $redis->set('key2', 'value2');
-         * $redis->set('key3', 'value3');
-         * $redis->getMultiple(array('key1', 'key2', 'key3')); // array('value1', 'value2', 'value3');
-         * $redis->getMultiple(array('key0', 'key1', 'key5')); // array(`FALSE`, 'value2', `FALSE`);
-         * </pre>
          */
         function getMultiple(array $keys) {
             $get = parent::getMultiple($keys);
 
             if ($get) {
-                foreach ($get as &$v) {
+                $ret = [];
+                foreach ($get as $k => &$v) {
                     self::decode($v);
+                    $ret[$keys[$k]] = $v;
                 }
+
+                return $ret;
             }
 
+            //@codeCoverageIgnoreStart
             return $get;
+            //@codeCoverageIgnoreEnd
         }
 
         /**
@@ -218,7 +215,6 @@
          *
          * @return  bool:   TRUE if the command is successful.
          * @link    http://redis.io/commands/setex
-         * @example $redis->setex('key', 3600, 'value'); // sets key → value, with 1h TTL.
          */
         function setex($key, $ttl, $value) {
             self::encode($value);
@@ -234,11 +230,6 @@
          *
          * @return  bool:   TRUE in case of success, FALSE in case of failure.
          * @link    http://redis.io/commands/setnx
-         * @example
-         * <pre>
-         * $redis->setnx('key', 'value');   // return TRUE
-         * $redis->setnx('key', 'value');   // return FALSE
-         * </pre>
          */
         function setnx($key, $value) {
             self::encode($value);
@@ -256,7 +247,6 @@
          *
          * @return  bool:   TRUE if the command is successful.
          * @link    http://redis.io/commands/set
-         * @example $redis->set('key', 'value');
          */
         function set($key, $value, $ttl = 0) {
             self::encode($value);

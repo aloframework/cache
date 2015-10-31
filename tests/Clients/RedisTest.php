@@ -4,9 +4,9 @@
 
     use AloFramework\Cache\Clients\RedisClient as Client;
     use AloFramework\Cache\Config\RedisConfig as Cfg;
-    use PHPUnit_Framework_TestCase;
-    use DateTime as DT;
     use DateInterval as DI;
+    use DateTime as DT;
+    use PHPUnit_Framework_TestCase;
 
     class RedisTest extends PHPUnit_Framework_TestCase {
 
@@ -31,6 +31,42 @@
             $this->assertNotEquals(0, count($this->client));
             $this->assertTrue(isset($this->client[__METHOD__]));
             $this->assertEquals((new Cfg())->timeout, $this->client->getRemainingLifetime(__METHOD__));
+        }
+
+        function testGetMultiple() {
+            $this->client->purge();
+
+            $this->assertTrue($this->client->setex(__METHOD__ . '1', 5, 'foo'));
+            $this->assertTrue($this->client->setex(__METHOD__ . '2', 5, 'bar'));
+
+            $this->assertEquals('foo', $this->client->get(__METHOD__ . '1'));
+            $this->assertEquals('bar', $this->client->get(__METHOD__ . '2'));
+
+            $expected = [__METHOD__ . '1' => 'foo',
+                         __METHOD__ . '2' => 'bar',
+                         __METHOD__ . '3' => false];
+
+            $actual = $this->client->getMultiple([__METHOD__ . '1',
+                                                  __METHOD__ . '2',
+                                                  __METHOD__ . '3']);
+
+            $this->assertEquals($expected, $actual);
+        }
+
+        function testSetNx() {
+            $val = ['foo' => 'bar'];
+            $this->assertTrue($this->client->setnx(__METHOD__, $val));
+            $this->assertEquals($val, $this->client[__METHOD__]);
+            $this->assertFalse($this->client->setnx(__METHOD__, $val));
+
+            $this->client->delete(__METHOD__);
+        }
+
+        function testSet() {
+            $val = ['foo' => ['foo' => 'bar']];
+
+            $this->assertTrue($this->client->set(__METHOD__, $val, 5));
+            $this->assertEquals($val, $this->client[__METHOD__]);
         }
 
         function testPurge() {
