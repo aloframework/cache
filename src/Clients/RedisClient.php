@@ -118,6 +118,53 @@
         }
 
         /**
+         * Get the value related to the specified key
+         * @author  Art <a.molcanovas@gmail.com>
+         *
+         * @param   string $key
+         *
+         * @return  mixed|bool: If key didn't exist, FALSE is returned. Otherwise, the value related to this key is
+         * returned.
+         * @link    http://redis.io/commands/get
+         * @example $redis->get('key');
+         */
+        function get($key) {
+            $get = parent::get($key);
+            self::decode($get);
+
+            return $get;
+        }
+
+        /**
+         * Get the values of all the specified keys. If one or more keys dont exist, the array will contain FALSE at the
+         * position of the key.
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param   array $keys Array containing the list of the keys
+         *
+         * @return  array Array containing the values related to keys in argument
+         * @example
+         * <pre>
+         * $redis->set('key1', 'value1');
+         * $redis->set('key2', 'value2');
+         * $redis->set('key3', 'value3');
+         * $redis->getMultiple(array('key1', 'key2', 'key3')); // array('value1', 'value2', 'value3');
+         * $redis->getMultiple(array('key0', 'key1', 'key5')); // array(`FALSE`, 'value2', `FALSE`);
+         * </pre>
+         */
+        function getMultiple(array $keys) {
+            $get = parent::getMultiple($keys);
+
+            if ($get) {
+                foreach ($get as &$v) {
+                    self::decode($v);
+                }
+            }
+
+            return $get;
+        }
+
+        /**
          * Sets a cached item
          * @author Art <a.molcanovas@gmail.com>
          *
@@ -129,6 +176,18 @@
          * @return bool
          */
         function setKey($key, $value, $timeout = null) {
+            return $this->formatTimeout($timeout) && $this->setex($key, $timeout, $value);
+        }
+
+        /**
+         * Formats the timeout
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param int|DateTime $timeout The timeout
+         *
+         * @return bool false if an error occurred
+         */
+        private function formatTimeout(&$timeout = null) {
             if ($timeout instanceof DateTime) {
                 $time    = time();
                 $timeout = $timeout->getTimestamp();
@@ -146,7 +205,91 @@
                 $timeout = Alo::ifnull($timeout, $this->config->timeout, true);
             }
 
-            return $this->setex($key, $timeout, $value);
+            return true;
+        }
+
+        /**
+         * Set the string value in argument as value of the key, with a time to live.
+         * @author  Art <a.molcanovas@gmail.com>
+         *
+         * @param   string $key   Key to set
+         * @param   int    $ttl   Lifetime
+         * @param   mixed  $value Value to set. Non-scalar values will be json-encoded
+         *
+         * @return  bool:   TRUE if the command is successful.
+         * @link    http://redis.io/commands/setex
+         * @example $redis->setex('key', 3600, 'value'); // sets key → value, with 1h TTL.
+         */
+        function setex($key, $ttl, $value) {
+            self::encode($value);
+
+            return parent::setex($key, $ttl, $value);
+        }
+
+        /**
+         * Set the string value in argument as value of the key if the key doesn't already exist in the database.
+         *
+         * @param   string $key   The key
+         * @param   string $value The value. If the value isn't scalar it will be json_encoded
+         *
+         * @return  bool:   TRUE in case of success, FALSE in case of failure.
+         * @link    http://redis.io/commands/setnx
+         * @example
+         * <pre>
+         * $redis->setnx('key', 'value');   // return TRUE
+         * $redis->setnx('key', 'value');   // return FALSE
+         * </pre>
+         */
+        function setnx($key, $value) {
+            self::encode($value);
+
+            return parent::setnx($key, $value);
+        }
+
+        /**
+         * Set the string value in argument as value of the key.
+         * @author  Art <a.molcanovas@gmail.com>
+         *
+         * @param   string $key   Key to set
+         * @param   string $value Value to set. If the value isn't scalar it will be json_encoded
+         * @param   int    $ttl   [optional] Calling setex() is preferred if you want a timeout.
+         *
+         * @return  bool:   TRUE if the command is successful.
+         * @link    http://redis.io/commands/set
+         * @example $redis->set('key', 'value');
+         */
+        function set($key, $value, $ttl = 0) {
+            self::encode($value);
+
+            return parent::set($key, $value, $ttl);
+        }
+
+        /**
+         * Encodes a value to store
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param mixed $value The value
+         */
+        private static function encode(&$value) {
+            if (!is_scalar($value)) {
+                $value = json_encode($value);
+            }
+        }
+
+        /**
+         * Decodes a stored value
+         * @author Art <a.molcanovas@gmail.com>
+         *
+         * @param mixed $value Reference to the value
+         */
+        private static function decode(&$value) {
+            if (is_string($value)) {
+                $dec = json_decode($value, true);
+
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    $value = $dec;
+                }
+            }
         }
 
         /**
