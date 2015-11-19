@@ -10,7 +10,7 @@
     use AloFramework\Config\ConfigurableTrait;
     use AloFramework\Log\Log;
     use ArrayIterator;
-    use DateTime;
+    use DateTimeInterface;
     use Psr\Log\LoggerInterface;
     use Redis;
     use Traversable;
@@ -165,12 +165,13 @@
          * Sets a cached item
          * @author Art <a.molcanovas@gmail.com>
          *
-         * @param string       $key      Item key
-         * @param mixed        $value    Item value
-         * @param int|DateTime $timeout  Expiration time in seconds, or a DateTime object for when it's supposed to
-         *                               expire
+         * @param string                $key     Item key
+         * @param mixed                 $value   Item value
+         * @param int|DateTimeInterface $timeout Expiration time in seconds, or a DateTimeInterface object for when
+         *                                       it's supposed to expire
          *
          * @return bool
+         * @since  1.0.2 Uses DateTimeInterface instead of DateTime
          */
         function setKey($key, $value, $timeout = null) {
             return $this->formatTimeout($timeout) && $this->setex($key, $timeout, $value);
@@ -180,12 +181,13 @@
          * Formats the timeout
          * @author Art <a.molcanovas@gmail.com>
          *
-         * @param int|DateTime $timeout The timeout
+         * @param int|DateTimeInterface $timeout The timeout
          *
          * @return bool false if an error occurred
+         * @since  1.0.2 Uses DateTimeInterface instead of DateTime
          */
         private function formatTimeout(&$timeout = null) {
-            if ($timeout instanceof DateTime) {
+            if ($timeout instanceof DateTimeInterface) {
                 $time    = time();
                 $timeout = $timeout->getTimestamp();
 
