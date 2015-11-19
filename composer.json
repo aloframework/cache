@@ -7,7 +7,7 @@
   "homepage": "https://github.com/aloframework/cache",
   "keywords": [
     "PHP",
-    "5.4",
+    "5.5",
     "AloFramework",
     "cache",
     "redis"
@@ -24,7 +24,7 @@
     "issues": "https://github.com/aloframework/cache/issues"
   },
   "require": {
-    "php": ">=5.4",
+    "php": ">=5.5",
     "ext-redis": "*",
     "aloframework/log": "^1.0 || ^2.0",
     "aloframework/config": "^1.0.1",
