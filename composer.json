@@ -24,14 +24,14 @@
     "issues": "https://github.com/aloframework/cache/issues"
   },
   "require": {
-    "php": ">=5.5",
+    "php": ">=5.5.9",
     "ext-redis": "*",
     "aloframework/log": "^1.0 || ^2.0",
     "aloframework/config": "^1.0.1",
     "aloframework/common": "^1.0"
   },
   "require-dev": {
-    "symfony/var-dumper": "^2.7",
+    "symfony/var-dumper": "^2.7 || ^3.0",
     "aloframework/handlers": "^2.0"
   },
   "autoload": {
