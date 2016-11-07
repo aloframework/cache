@@ -39,7 +39,7 @@
          *
          * @return bool Whether the connection succeeded
          */
-        function connect($ip = null, $port = null);
+        public function connect($ip = null, $port = null);
 
         /**
          * Deletes a cached item
@@ -50,7 +50,7 @@
          *
          * @return ClientInterface
          */
-        function delete($key);
+        public function delete($key);
 
         /**
          * Check if the key exists
@@ -61,7 +61,7 @@
          *
          * @return bool
          */
-        function exists($key);
+        public function exists($key);
 
         /**
          * Returns a cached item
@@ -72,7 +72,7 @@
          *
          * @return mixed The item or null if it's not found
          */
-        function getKey($key);
+        public function getKey($key);
 
         /**
          * Returns all the cached items as an associative array
@@ -80,7 +80,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return array
          */
-        function getAll();
+        public function getAll();
 
         /**
          * Purges all cached items
@@ -88,7 +88,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return bool
          */
-        function purge();
+        public function purge();
 
         /**
          * Sets a cached item
@@ -102,7 +102,7 @@
          *
          * @return bool
          */
-        function setKey($key, $value, $timeout = null);
+        public function setKey($key, $value, $timeout = null);
 
         /**
          * Returns how many seconds this key has left before expiring
@@ -113,5 +113,5 @@
          *
          * @return int The remaining lifetime in seconds. If the key doesn't exist 0 is returned.
          */
-        function getRemainingLifetime($key);
+        public function getRemainingLifetime($key);
     }

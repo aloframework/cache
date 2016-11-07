@@ -58,7 +58,7 @@
          *
          * @throws CacheException If the Redis PHP extension isn't enabled
          */
-        function __construct(Config $config = null, LoggerInterface $logger = null) {
+        public function __construct(Config $config = null, LoggerInterface $logger = null) {
             parent::__construct();
             //@codeCoverageIgnoreStart
             if (!class_exists('\Redis')) {
@@ -81,7 +81,7 @@
          *
          * @return bool Whether the connection succeeded
          */
-        function connect($ip = null, $port = null) {
+        public function connect($ip = null, $port = null) {
             $ip = Alo::ifnull($ip, $this->config->ip, true);
             $port = Alo::ifnull($port, $this->config->port, true);
 
@@ -102,7 +102,7 @@
          * @link  http://php.net/manual/en/countable.count.php
          * @return int
          */
-        function count() {
+        public function count() {
             return $this->dbSize();
         }
 
@@ -115,7 +115,7 @@
          *
          * @return self
          */
-        function delete($key) {
+        public function delete($key) {
             if (is_array($key)) {
                 $this->log->info('Deleting the following Redis keys: ' . implode(', ', $key));
                 call_user_func_array('parent::delete', $key);
@@ -136,7 +136,7 @@
          *
          * @return mixed The item or null if it's not found
          */
-        function getKey($key) {
+        public function getKey($key) {
             return $this->get($key);
         }
 
@@ -151,7 +151,7 @@
          * returned.
          * @link    http://redis.io/commands/get
          */
-        function get($key) {
+        public function get($key) {
             $get = parent::get($key);
             self::decode($get);
 
@@ -168,7 +168,7 @@
          *
          * @return  array Array containing the values related to keys in argument
          */
-        function getMultiple(array $keys) {
+        public function getMultiple(array $keys) {
             $get = parent::getMultiple($keys);
 
             if ($get) {
@@ -199,7 +199,7 @@
          * @return bool
          * @since  1.0.2 Uses DateTimeInterface instead of DateTime
          */
-        function setKey($key, $value, $timeout = null) {
+        public function setKey($key, $value, $timeout = null) {
             return $this->formatTimeout($timeout) && $this->setex($key, $timeout, $value);
         }
 
@@ -246,7 +246,7 @@
          * @return  bool:   TRUE if the command is successful.
          * @link    http://redis.io/commands/setex
          */
-        function setex($key, $ttl, $value) {
+        public function setex($key, $ttl, $value) {
             self::encode($value);
 
             return parent::setex($key, $ttl, $value);
@@ -261,7 +261,7 @@
          * @return  bool:   TRUE in case of success, FALSE in case of failure.
          * @link    http://redis.io/commands/setnx
          */
-        function setnx($key, $value) {
+        public function setnx($key, $value) {
             self::encode($value);
 
             return parent::setnx($key, $value);
@@ -279,7 +279,7 @@
          * @return  bool:   TRUE if the command is successful.
          * @link    http://redis.io/commands/set
          */
-        function set($key, $value, $ttl = 0) {
+        public function set($key, $value, $ttl = 0) {
             self::encode($value);
 
             return parent::set($key, $value, $ttl);
@@ -321,7 +321,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return array
          */
-        function getAll() {
+        public function getAll() {
             $get = $this->keys('*');
             $r = [];
 
@@ -340,7 +340,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return bool
          */
-        function purge() {
+        public function purge() {
             $p = $this->flushAll();
 
             if ($p) {
@@ -363,7 +363,7 @@
          * @return Traversable An instance of an object implementing <b>Iterator</b> or
          *         <b>Traversable</b>
          */
-        function getIterator() {
+        public function getIterator() {
             return new ArrayIterator($this->getAll());
         }
 
@@ -377,7 +377,7 @@
          *
          * @return boolean
          */
-        function offsetExists($offset) {
+        public function offsetExists($offset) {
             return $this->exists($offset);
         }
 
@@ -391,7 +391,7 @@
          *
          * @return mixed
          */
-        function offsetGet($offset) {
+        public function offsetGet($offset) {
             return $this->getKey($offset);
         }
 
@@ -404,7 +404,7 @@
          *
          * @return bool
          */
-        function exists($key) {
+        public function exists($key) {
             return parent::exists($key);
         }
 
@@ -419,7 +419,7 @@
          *
          * @return void
          */
-        function offsetSet($offset, $value) {
+        public function offsetSet($offset, $value) {
             $this->setKey($offset, $value);
         }
 
@@ -433,7 +433,7 @@
          *
          * @return void
          */
-        function offsetUnset($offset) {
+        public function offsetUnset($offset) {
             $this->delete($offset);
         }
 
@@ -446,7 +446,7 @@
          *
          * @return int The remaining lifetime in seconds. If the key doesn't exist 0 is returned.
          */
-        function getRemainingLifetime($key) {
+        public function getRemainingLifetime($key) {
             return (int)$this->ttl($key);
         }
 

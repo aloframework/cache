@@ -65,7 +65,7 @@
          *
          * @param array $cfg Your custom config overrides
          */
-        function __construct(array $cfg = []) {
+        public function __construct(array $cfg = []) {
             self::setDefaultConfig();
             parent::__construct(self::$defaults, $cfg);
         }

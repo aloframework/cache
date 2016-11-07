@@ -76,7 +76,7 @@
          * @param mixed  $value  Immediately set the value
          * @param CI     $client Store a reference to the client
          */
-        function __construct($key = null, $value = null, CI $client = null) {
+        public function __construct($key = null, $value = null, CI $client = null) {
             $this->setKey($key)->setValue($value);
 
             if ($client) {
@@ -94,7 +94,7 @@
          * @return mixed
          * @throws Invalid when the key doesn't exist
          */
-        function __get($key) {
+        public function __get($key) {
             if (in_array($key, self::$allowedMagic)) {
                 return $this->{$key};
             } else {
@@ -112,7 +112,7 @@
          *
          * @throws Invalid when the key doesn't exist
          */
-        function __set($key, $value) {
+        public function __set($key, $value) {
             if (in_array($key, self::$allowedMagic)) {
                 call_user_func([$this, 'set' . ucfirst(strtolower($key))], $value);
             } else {
@@ -126,7 +126,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return int
          */
-        function getLifetime() {
+        public function getLifetime() {
             return $this->lifetime;
         }
 
@@ -139,7 +139,7 @@
          *
          * @return bool
          */
-        function setLifetime($timeout) {
+        public function setLifetime($timeout) {
             $time = time();
 
             if ($timeout instanceof DateTime) {
@@ -167,7 +167,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return CI|null
          */
-        function getClient() {
+        public function getClient() {
             return $this->client;
         }
 
@@ -180,7 +180,7 @@
          *
          * @return self
          */
-        function setClient(CI $client) {
+        public function setClient(CI $client) {
             $this->client = $client;
 
             return $this;
@@ -192,7 +192,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return string
          */
-        function getKey() {
+        public function getKey() {
             return $this->key;
         }
 
@@ -205,7 +205,7 @@
          *
          * @return self
          */
-        function setKey($key) {
+        public function setKey($key) {
             $this->key = $key;
 
             return $this;
@@ -217,7 +217,7 @@
          * @author Art <a.molcanovas@gmail.com>
          * @return mixed
          */
-        function getValue() {
+        public function getValue() {
             return $this->value;
         }
 
@@ -230,7 +230,7 @@
          *
          * @return self
          */
-        function setValue($value) {
+        public function setValue($value) {
             $this->value = $value;
 
             return $this;
@@ -246,7 +246,7 @@
          * @return bool
          * @throws Cex If the client or the key isn't set
          */
-        function exists(CI $server = null) {
+        public function exists(CI $server = null) {
             $this->checkVars();
             if (!$server) {
                 $this->checkClient();
@@ -305,7 +305,7 @@
          * @return bool true if the key existed, false if it didn't
          * @throws Cex If the client or the key isn't set
          */
-        function delete(CI $server = null) {
+        public function delete(CI $server = null) {
             $this->checkVars();
             if (!$server) {
                 $this->checkClient();
@@ -330,7 +330,7 @@
          * @return bool
          * @throws Cex If the client or the key isn't set
          */
-        function saveToServer(CI $server = null) {
+        public function saveToServer(CI $server = null) {
             $this->checkVars();
             if (!$server) {
                 $this->checkClient();
@@ -354,7 +354,7 @@
          * @uses   CacheItem::getLifetimeFromServer()
          * @uses   CacheItem::getValueFromServer()
          */
-        function getFromServer(CI $server = null) {
+        public function getFromServer(CI $server = null) {
             $ttl = $this->getLifetimeFromServer($server);
             $val = $this->getValueFromServer($server);
 
@@ -371,7 +371,7 @@
          * @return int the remaining lifetime if the key exists, 0 if it doesn't
          * @throws Cex If the client or the key isn't set
          */
-        function getLifetimeFromServer(CI $server = null) {
+        public function getLifetimeFromServer(CI $server = null) {
             $this->checkVars();
             if (!$server) {
                 $this->checkClient();
@@ -395,7 +395,7 @@
          * @return mixed|null the value if the key exists, null if it doesn't
          * @throws Cex If the client or the key isn't set
          */
-        function getValueFromServer(CI $server = null) {
+        public function getValueFromServer(CI $server = null) {
             $this->checkVars();
             if (!$server) {
                 $this->checkClient();
