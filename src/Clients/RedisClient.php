@@ -1,4 +1,20 @@
 <?php
+    /**
+ *    Copyright (c) Arturas Molcanovas <a.molcanovas@gmail.com> 2016.
+ *    https://github.com/aloframework/cache
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 
     namespace AloFramework\Cache\Clients;
 
@@ -17,6 +33,7 @@
 
     /**
      * A Redis-based cache client
+     *
      * @author Art <a.molcanovas@gmail.com>
      */
     class RedisClient extends Redis implements ClientInterface, Configurable {
@@ -25,12 +42,14 @@
 
         /**
          * Logger
+         *
          * @var LoggerInterface
          */
         protected $log;
 
         /**
          * Contructor
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param Config          $config Config object
@@ -47,13 +66,14 @@
                                          CacheException::E_EXTENSION_DISABLED);
             } else {
                 //@codeCoverageIgnoreEnd
-                $this->log    = Alo::ifnull($logger, new Log());
+                $this->log = Alo::ifnull($logger, new Log());
                 $this->config = Alo::ifnull($config, new Config());
             }
         }
 
         /**
          * Connect to the cache server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $ip   Server IP
@@ -62,7 +82,7 @@
          * @return bool Whether the connection succeeded
          */
         function connect($ip = null, $port = null) {
-            $ip   = Alo::ifnull($ip, $this->config->ip, true);
+            $ip = Alo::ifnull($ip, $this->config->ip, true);
             $port = Alo::ifnull($port, $this->config->port, true);
 
             $con = parent::connect($ip, $port);
@@ -78,6 +98,7 @@
 
         /**
          * Count elements of an object
+         *
          * @link  http://php.net/manual/en/countable.count.php
          * @return int
          */
@@ -87,6 +108,7 @@
 
         /**
          * Deletes a cached item
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string|array $key Item key or array of keys
@@ -107,6 +129,7 @@
 
         /**
          * Returns a cached item
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key Item key
@@ -119,6 +142,7 @@
 
         /**
          * Get the value related to the specified key
+         *
          * @author  Art <a.molcanovas@gmail.com>
          *
          * @param   string $key
@@ -137,6 +161,7 @@
         /**
          * Get the values of all the specified keys. If one or more keys dont exist, the array will contain FALSE at the
          * position of the key.
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param   array $keys Array containing the list of the keys
@@ -163,6 +188,7 @@
 
         /**
          * Sets a cached item
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string                $key     Item key
@@ -179,6 +205,7 @@
 
         /**
          * Formats the timeout
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param int|DateTimeInterface $timeout The timeout
@@ -188,7 +215,7 @@
          */
         private function formatTimeout(&$timeout = null) {
             if ($timeout instanceof DateTimeInterface) {
-                $time    = time();
+                $time = time();
                 $timeout = $timeout->getTimestamp();
 
                 if ($time > $timeout) {
@@ -209,6 +236,7 @@
 
         /**
          * Set the string value in argument as value of the key, with a time to live.
+         *
          * @author  Art <a.molcanovas@gmail.com>
          *
          * @param   string $key   Key to set
@@ -241,6 +269,7 @@
 
         /**
          * Set the string value in argument as value of the key.
+         *
          * @author  Art <a.molcanovas@gmail.com>
          *
          * @param   string $key   Key to set
@@ -258,6 +287,7 @@
 
         /**
          * Encodes a value to store
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param mixed $value The value
@@ -270,6 +300,7 @@
 
         /**
          * Decodes a stored value
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param mixed $value Reference to the value
@@ -286,12 +317,13 @@
 
         /**
          * Returns all the cached items as an associative array
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return array
          */
         function getAll() {
             $get = $this->keys('*');
-            $r   = [];
+            $r = [];
 
             if ($get) {
                 foreach ($get as $k) {
@@ -304,6 +336,7 @@
 
         /**
          * Purges all cached items
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return bool
          */
@@ -324,10 +357,11 @@
 
         /**
          * Retrieve an external iterator
+         *
          * @link   http://php.net/manual/en/iteratoraggregate.getiterator.php
          * @author Art <a.molcanovas@gmail.com>
          * @return Traversable An instance of an object implementing <b>Iterator</b> or
-         * <b>Traversable</b>
+         *         <b>Traversable</b>
          */
         function getIterator() {
             return new ArrayIterator($this->getAll());
@@ -335,6 +369,7 @@
 
         /**
          * Whether a offset exists
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @link   http://php.net/manual/en/arrayaccess.offsetexists.php
          *
@@ -348,6 +383,7 @@
 
         /**
          * Offset to retrieve
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @link   http://php.net/manual/en/arrayaccess.offsetget.php
          *
@@ -361,6 +397,7 @@
 
         /**
          * Check if the key exists
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key The key
@@ -373,6 +410,7 @@
 
         /**
          * Offset to set
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @link   http://php.net/manual/en/arrayaccess.offsetset.php
          *
@@ -387,6 +425,7 @@
 
         /**
          * Offset to unset
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @link   http://php.net/manual/en/arrayaccess.offsetunset.php
          *
@@ -400,6 +439,7 @@
 
         /**
          * Returns how many seconds this key has left before expiring
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key The key

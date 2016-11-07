@@ -1,4 +1,20 @@
 <?php
+    /**
+ *    Copyright (c) Arturas Molcanovas <a.molcanovas@gmail.com> 2016.
+ *    https://github.com/aloframework/cache
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 
     namespace AloFramework\Cache;
 
@@ -8,12 +24,14 @@
 
     /**
      * The AloFramework cache interface
+     *
      * @author Art <a.molcanovas@gmail.com>
      */
     interface ClientInterface extends ArrayAccess, Countable, IteratorAggregate {
 
         /**
          * Connect to the cache server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $ip   Server IP
@@ -25,6 +43,7 @@
 
         /**
          * Deletes a cached item
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string|array $key Item key or array of keys
@@ -35,6 +54,7 @@
 
         /**
          * Check if the key exists
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key The key
@@ -45,6 +65,7 @@
 
         /**
          * Returns a cached item
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key Item key
@@ -55,6 +76,7 @@
 
         /**
          * Returns all the cached items as an associative array
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return array
          */
@@ -62,6 +84,7 @@
 
         /**
          * Purges all cached items
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return bool
          */
@@ -69,6 +92,7 @@
 
         /**
          * Sets a cached item
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string        $key     Item key
@@ -82,6 +106,7 @@
 
         /**
          * Returns how many seconds this key has left before expiring
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key The key

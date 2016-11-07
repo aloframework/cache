@@ -1,12 +1,28 @@
 <?php
+    /**
+ *    Copyright (c) Arturas Molcanovas <a.molcanovas@gmail.com> 2016.
+ *    https://github.com/aloframework/cache
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 
     namespace AloFramework\Cache\Tests\Misc;
 
     use AloFramework\Cache\CacheItem as CI;
-    use PHPUnit_Framework_TestCase;
     use AloFramework\Cache\Clients\RedisClient as Redis;
     use DateInterval as DI;
     use DateTime as DT;
+    use PHPUnit_Framework_TestCase;
 
     class CacheItemTest extends PHPUnit_Framework_TestCase {
 
@@ -20,7 +36,7 @@
         }
 
         function testGettersSetters() {
-            $ci           = new CI(__METHOD__, __CLASS__, $this->r);
+            $ci = new CI(__METHOD__, __CLASS__, $this->r);
             $ci->lifetime = (new DT())->add(new DI('PT30S'));
 
             $this->assertEquals(30, $ci->lifetime);
@@ -41,7 +57,7 @@
          * @expectedExceptionMessage The timeout cannot be in the past
          */
         function testSetLifetimePast() {
-            $ci           = new CI(__METHOD__, __CLASS__, $this->r);
+            $ci = new CI(__METHOD__, __CLASS__, $this->r);
             $ci->lifetime = (new DT())->sub(new DI('PT30S'));
         }
 
@@ -58,7 +74,7 @@
          * @expectedExceptionMessage The property does not exist: foo
          */
         function testInvalidMagicSet() {
-            $ci      = new CI();
+            $ci = new CI();
             $ci->foo = 'bar';
         }
 

@@ -1,4 +1,20 @@
 <?php
+    /**
+ *    Copyright (c) Arturas Molcanovas <a.molcanovas@gmail.com> 2016.
+ *    https://github.com/aloframework/cache
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 
     namespace AloFramework\Cache;
 
@@ -9,6 +25,7 @@
 
     /**
      * A representation of a cached item
+     *
      * @author Art <a.molcanovas@gmail.com>
      * @property string          $key      Cache item key
      * @property mixed           $value    Cache item value
@@ -19,30 +36,35 @@
 
         /**
          * The cache client
+         *
          * @var ClientInterface
          */
         protected $client;
 
         /**
          * Cache item key
+         *
          * @var string
          */
         private $key;
 
         /**
          * The cached value
+         *
          * @var mixed
          */
         private $value;
 
         /**
          * The lifetime of the key in seconds
+         *
          * @var int
          */
         private $lifetime = 0;
 
         /**
          * Allowed magic getters/setters
+         *
          * @var array
          */
         private static $allowedMagic = ['key', 'lifetime', 'value', 'client'];
@@ -64,6 +86,7 @@
 
         /**
          * Magic getter
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key key to get
@@ -81,6 +104,7 @@
 
         /**
          * Magic setter
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key   Key to set
@@ -98,6 +122,7 @@
 
         /**
          * Returns the key lifetime
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return int
          */
@@ -107,6 +132,7 @@
 
         /**
          * Sets the cache item timeout
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param int|DateTime $timeout Either the timeout in seconds or a DateTime object of when the key should expire
@@ -137,6 +163,7 @@
 
         /**
          * Returns the cache client instance
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return CI|null
          */
@@ -146,6 +173,7 @@
 
         /**
          * Sets the cache client
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param CI $client
@@ -160,6 +188,7 @@
 
         /**
          * Returns the set key
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return string
          */
@@ -169,6 +198,7 @@
 
         /**
          * Sets the key
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param string $key The key
@@ -183,6 +213,7 @@
 
         /**
          * Returns the value
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return mixed
          */
@@ -192,6 +223,7 @@
 
         /**
          * Sets the value
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param mixed $value The value
@@ -206,6 +238,7 @@
 
         /**
          * Checks if $this->key exists on the server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param CI $server The server to use; if omitted, $this->client will be used
@@ -227,6 +260,7 @@
 
         /**
          * Check if the variables are set correctly, format $this->value & $this->lifetime
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return self
          * @throws Cex If $this->key isn't set
@@ -248,6 +282,7 @@
 
         /**
          * Check if the client is set correctly
+         *
          * @author Art <a.molcanovas@gmail.com>
          * @return self
          * @throws Cex if it isn't
@@ -262,6 +297,7 @@
 
         /**
          * Delete the key from the server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param CI $server The server to use; if omitted; $this->client will be used
@@ -286,6 +322,7 @@
 
         /**
          * Saves the item to the server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param CI $server The server to use; if omitted; $this->client will be used
@@ -307,6 +344,7 @@
 
         /**
          * Sets $this->value & $this->lifetime from the server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param CI $server The server to fetch from; if omitted, $this->client will be used.
@@ -325,6 +363,7 @@
 
         /**
          * Sets $this->lifetime from the server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param CI $server The server to fetch from; of omitted, $this->client will be used
@@ -348,6 +387,7 @@
 
         /**
          * Sets $this->value from the server
+         *
          * @author Art <a.molcanovas@gmail.com>
          *
          * @param CI $server The server to fetch from; of omitted, $this->client will be used
